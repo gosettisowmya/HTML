@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert("You clicked the button!");
+        }
+
+        function updateText() {
+            document.getElementById("dynamicText").innerHTML = "Text has changed!";
+        }
+    </script>
+</head>
+<body>
+    <h1>Interactive HTML Elements</h1>
+
+    <h2>Button Click</h2>
+    <button onclick="showAlert()">Click Me</button>
+
+    <h2>Changing Text</h2>
+    <p id="dynamicText">Click the button to change this text.</p>
+    <button onclick="updateText()">Change Text</button>
+
+    <h2>Input Field</h2>
+    <input type="text" id="userInput" placeholder="Type something">
+    <button onclick="alert(document.getElementById('userInput').value)">Show Input</button>
+
+    <h2>Dropdown Menu</h2>
+    <select onchange="alert('You selected: ' + this.value)">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+
+</body>
+</html>

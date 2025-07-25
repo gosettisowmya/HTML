@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emoji Reaction Dashboard</title>
+
+  <!-- ✅ Enhanced Internal CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #f093fb, #f5576c, #4facfe, #43e97b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .dashboard {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 50px;
+      max-width: 650px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 30px;
+      color: #2d3436;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    input {
+      padding: 14px;
+      width: 60%;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #6c5ce7;
+      box-shadow: 0 0 8px rgba(108, 92, 231, 0.4);
+    }
+
+    button {
+      padding: 14px 28px;
+      font-size: 16px;
+      background: linear-gradient(45deg, #6c5ce7, #00cec9);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.4s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #00cec9, #6c5ce7);
+    }
+
+    .emoji-display {
+      font-size: 100px;
+      margin-top: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .emoji-display.animate {
+      transform: scale(1.4);
+    }
+
+    #description {
+      font-size: 22px;
+      margin-top: 20px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    .emoji-list {
+      margin-top: 40px;
+      font-size: 28px;
+      background-color: #f1f2f6;
+      padding: 15px;
+      border-radius: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      gap: 15px;
+    }
+
+    .emoji-item {
+      transition: transform 0.2s;
+    }
+
+    .emoji-item:hover {
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>🎭 Emoji Reaction Dashboard</h1>
+
+    <div class="input-group">
+      <input type="text" id="emotionInput" placeholder="e.g. happy, love, angry, sleepy..." />
+      <button onclick="showEmoji()">React</button>
+    </div>
+
+    <div class="emoji-display" id="emojiDisplay">🤔</div>
+    <p id="description">Let your feelings show!</p>
+
+    <div class="emoji-list">
+      <div class="emoji-item">😊</div>
+      <div class="emoji-item">😢</div>
+      <div class="emoji-item">😠</div>
+      <div class="emoji-item">🎉</div>
+      <div class="emoji-item">❤️</div>
+      <div class="emoji-item">😂</div>
+      <div class="emoji-item">😮</div>
+      <div class="emoji-item">😎</div>
+      <div class="emoji-item">🤒</div>
+      <div class="emoji-item">🥳</div>
+      <div class="emoji-item">😴</div>
+      <div class="emoji-item">😇</div>
+      <div class="emoji-item">😳</div>
+      <div class="emoji-item">🤯</div>
+    </div>
+  </div>
+
+  <!-- ✅ Enhanced JavaScript -->
+  <script>
+    function showEmoji() {
+      const input = document.getElementById("emotionInput").value.toLowerCase();
+      const emojiDisplay = document.getElementById("emojiDisplay");
+      const description = document.getElementById("description");
+
+      let emoji = "🤔";
+      let text = "Hmm... I don't recognize that emotion.";
+
+      if (input.includes("happy") || input.includes("joy")) {
+        emoji = "😊";
+        text = "You seem happy!";
+      } else if (input.includes("sad") || input.includes("cry")) {
+        emoji = "😢";
+        text = "Feeling a bit down?";
+      } else if (input.includes("angry") || input.includes("mad")) {
+        emoji = "😠";
+        text = "Oh no, anger detected!";
+      } else if (input.includes("congratulations") || input.includes("congrats") || input.includes("celebrate")) {
+        emoji = "🎉";
+        text = "Big congrats to you!";
+      } else if (input.includes("love")) {
+        emoji = "❤️";
+        text = "Lots of love!";
+      } else if (input.includes("laugh") || input.includes("funny")) {
+        emoji = "😂";
+        text = "Haha, that's hilarious!";
+      } else if (input.includes("wow") || input.includes("amaze") || input.includes("awesome")) {
+        emoji = "😮";
+        text = "Wow! That's amazing!";
+      } else if (input.includes("cool")) {
+        emoji = "😎";
+        text = "Looking cool!";
+      } else if (input.includes("sick") || input.includes("ill")) {
+        emoji = "🤒";
+        text = "Get well soon!";
+      } else if (input.includes("party") || input.includes("celebration")) {
+        emoji = "🥳";
+        text = "Let's party!";
+      } else if (input.includes("sleep") || input.includes("tired")) {
+        emoji = "😴";
+        text = "Time for rest!";
+      } else if (input.includes("blessed") || input.includes("grace")) {
+        emoji = "😇";
+        text = "Stay blessed!";
+      } else if (input.includes("shy") || input.includes("embarrass")) {
+        emoji = "😳";
+        text = "A little shy?";
+      } else if (input.includes("shock") || input.includes("explode")) {
+        emoji = "🤯";
+        text = "Mind blown!";
+      }
+
+      emojiDisplay.textContent = emoji;
+      description.textContent = text;
+
+      // Animate
+      emojiDisplay.classList.add("animate");
+      setTimeout(() => emojiDisplay.classList.remove("animate"), 300);
+    }
+  </script>
+</body>
+</html>
